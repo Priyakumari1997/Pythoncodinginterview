@@ -4,8 +4,8 @@ Here's a 4-day plan in your priority order — Heap → Two Pointers → Sliding
 
 Day 1 — Heaps / Priority Queue
 
-Kth Largest Element in an Array (#215)
-Top K Frequent Elements (#347)
+Kth Largest Element in an Array (#215) - done
+Top K Frequent Elements (#347) - done 
 Merge K Sorted Lists (#23)
 K Closest Points to Origin (#973)
 Task Scheduler (#621)
@@ -16,13 +16,13 @@ Focus: recognize "top K" / "kth" language → min-heap of size K; know when heap
 
 Day 2 — Two Pointers
 
-3Sum (#15)
-Container With Most Water (#11)
-Trapping Rain Water (#42)
+3Sum (#15) - done
+Container With Most Water (#11) - done
+Trapping Rain Water (#42) - done
 Valid Palindrome II (#680)
-Sort Colors (#75)
-Remove Duplicates from Sorted Array II (#80)
-Two Sum II — Input Array Is Sorted (#167)
+Sort Colors (#75)  - done
+Remove Duplicates from Sorted Array II (#80) - done
+Two Sum II — Input Array Is Sorted (#167) - done
 
 Focus: sorted-array pattern (converging pointers) vs fast/slow pointer pattern — know which signals which.
 
