@@ -5,9 +5,9 @@ Here's a 4-day plan in your priority order — Heap → Two Pointers → Sliding
 Day 1 — Heaps / Priority Queue
 
 Kth Largest Element in an Array (#215)
-K Closest Points to Origin (#973)
 Top K Frequent Elements (#347)
 Merge K Sorted Lists (#23)
+K Closest Points to Origin (#973)
 Task Scheduler (#621)
 Find Median from Data Stream (#295)
 Meeting Rooms II (#253)
