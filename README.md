@@ -7,9 +7,8 @@ Day 1 — Heaps / Priority Queue
 Kth Largest Element in an Array (#215) - done
 Top K Frequent Elements (#347) - done 
 Merge K Sorted Lists (#23)
-K Closest Points to Origin (#973)
 Task Scheduler (#621)
-Find Median from Data Stream (#295)
+Find Median from Data Stream (#295)  - done 
 Meeting Rooms II (#253)
 
 Focus: recognize "top K" / "kth" language → min-heap of size K; know when heap beats sorting (O(n log k) vs O(n log n)).
@@ -28,15 +27,79 @@ Focus: sorted-array pattern (converging pointers) vs fast/slow pointer pattern �
 
 Day 3 — Sliding Window
 
-Longest Substring Without Repeating Characters (#3)
 Longest Repeating Character Replacement (#424)
 Minimum Window Substring (#76)
-Permutation in String (#567)
 Sliding Window Maximum (#239)
-Subarray Sum Equals K (#560) — hash+prefix variant, good contrast case
-Max Consecutive Ones III (#1004)
+#30 Random Pick with Weight
 
 Focus: fixed vs variable window; when to shrink from the left vs recompute; deque for window max.
+
+FIXED — 5
+⭐ Maximum Average Subarray I - done
+⭐ Number of Sub-arrays of Size K... - done
+⭐ Maximum Number of Vowels in a Substring of Given Length - done
+⭐ Find All Anagrams in a String - done
+⭐ Maximum Sum of Distinct Subarrays With Length K  - done
+Permutation in String (#567) - done
+
+VARIABLE — 6
+🔥 Longest Substring Without Repeating Characters  - done
+🔥 Minimum Size Subarray Sum - done
+🔥 Fruit Into Baskets   - done
+🔥 Max Consecutive Ones III - done
+🔥 Longest Repeating Character Replacement
+🔥 Minimum Window Substring
+🔥 Sliding Window Maximum (#239)
+
+PREFIX SUM — 4
+🔥 Subarray Sum Equals K   - done
+🔥 Binary Subarrays With Sum   - done
+🔥 Subarray Sums Divisible by K  - done
+🔥 Continuous Subarray Sum
+
+
+                 SUBARRAY / SUBSTRING
+                         │
+                         ↓
+                  Is size fixed?
+                    /          \
+                  YES           NO
+                   ↓             ↓
+             FIXED WINDOW    Look at condition
+                                  │
+               ┌──────────────────┼──────────────────┐
+               ↓                  ↓                  ↓
+            AT MOST K         EXACTLY K            SUM
+               ↓                  ↓                  ↓
+         Sliding Window    atMost(K) -       Is it == K?
+                            atMost(K-1)        /       \
+                                             YES       NO
+                                              ↓         ↓
+                                       Prefix + HM    Is ≥/≤?
+                                                        ↓
+                                               Are numbers positive?
+                                                   /          \
+                                                 YES           NO
+                                                  ↓             ↓
+                                          Sliding Window   Prefix/Deque
+
+⭐ Memorize these 8 lines 
+1. Fixed K                  → Fixed Sliding Window
+
+2. At Most K                → Sliding Window
+
+3. Exactly K                → AtMost(K) - AtMost(K-1)
+
+4. Sum == K                 → Prefix Sum + HashMap
+
+5. Sum >= K + positive      → Sliding Window
+
+6. Sum <= K + positive      → Sliding Window
+
+7. Sum >= K + negatives     → Prefix Sum + Monotonic Deque
+   (especially shortest)
+
+8. Negative numbers + exact sum → Prefix Sum + HashMap
 
 Day 4 — Hashing/Sorting + Graphs (combined)
 
