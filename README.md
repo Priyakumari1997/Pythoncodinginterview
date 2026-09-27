@@ -2,7 +2,9 @@
 Quick question for practice fast
 Here's a 4-day plan in your priority order — Heap → Two Pointers → Sliding Window → Hashing/Graphs (combined since you're compressing to 4 days):
 
+------------------------------------------------------
 Day 1 — Heaps / Priority Queue
+------------------------------------------------------
 
 Kth Largest Element in an Array (#215) - done
 Top K Frequent Elements (#347) - done 
@@ -13,7 +15,9 @@ Meeting Rooms II (#253)
 
 Focus: recognize "top K" / "kth" language → min-heap of size K; know when heap beats sorting (O(n log k) vs O(n log n)).
 
+------------------------------------------------------
 Day 2 — Two Pointers
+-------------------------------------------------------
 
 3Sum (#15) - done
 Container With Most Water (#11) - done
@@ -25,10 +29,10 @@ Two Sum II — Input Array Is Sorted (#167) - done
 
 Focus: sorted-array pattern (converging pointers) vs fast/slow pointer pattern — know which signals which.
 
+
+-----------------------------------------------------
 Day 3 — Sliding Window
-
-
-Sliding Window Maximum (#239)
+-----------------------------------------------------
 
 Focus: fixed vs variable window; when to shrink from the left vs recompute; deque for window max.
 
@@ -45,9 +49,9 @@ VARIABLE — 6
 🔥 Minimum Size Subarray Sum - done
 🔥 Fruit Into Baskets   - done
 🔥 Max Consecutive Ones III - done
-🔥 Longest Repeating Character Replacement - dones
+🔥 Longest Repeating Character Replacement - done
 🔥 Minimum Window Substring  - done
-🔥 Sliding Window Maximum (#239)
+🔥 Sliding Window Maximum (#239) - done
 
 PREFIX SUM — 4
 🔥 Subarray Sum Equals K   - done
@@ -99,7 +103,14 @@ PREFIX SUM — 4
 
 8. Negative numbers + exact sum → Prefix Sum + HashMap
 
-Day 4 — Hashing/Sorting + Graphs (combined)
+------------------------------------------------------
+Day 4 — STACK
+-------------------------------------------------------
+🔥 Valid Parentheses  - done
+
+------------------------------------------------------
+Day 5 — Hashing/Sorting + Graphs (combined)
+------------------------------------------------------
 
 Two Sum (#1)
 Group Anagrams (#49)

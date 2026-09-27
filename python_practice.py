@@ -392,6 +392,28 @@ class Solution:
         return res
 
 
+https://leetcode.com/problems/sliding-window-maximum/description/
+
+from collections import deque
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        d = deque()
+        res = []
+        for i in range(k):
+            while d and nums[i] >= nums[d[-1]]:
+                d.pop()
+            d.append(i)
+        res.append(nums[d[0]])
+
+        for j in range(k,len(nums)):
+            while d and d[0] <= j-k:
+                d.popleft()
+            while d and nums[j] >= nums[d[-1]]:
+                d.pop()
+            d.append(j)
+            res.append(nums[d[0]])
+        return res
+            
 
         
 
@@ -460,6 +482,31 @@ class Solution:
             if mod not in fre:
                 fre[mod] = right
         return False
+
+ 
+===================================
+Stack
+===================================
+
+
+https://leetcode.com/problems/valid-parentheses/
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        opened = ['{','[','(']
+        closed = ['}',']',')']
+        stack = []
+        for i in range(len(s)):
+            if s[i] in opened:
+                stack.append(s[i])
+            else:
+                if stack and stack[-1] == opened[closed.index(s[i])]:
+                    stack.pop()
+                else:
+                    return False
+        return len(stack) == 0
+       
+
             
          
 
