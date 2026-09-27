@@ -27,10 +27,8 @@ Focus: sorted-array pattern (converging pointers) vs fast/slow pointer pattern �
 
 Day 3 — Sliding Window
 
-Longest Repeating Character Replacement (#424)
-Minimum Window Substring (#76)
+
 Sliding Window Maximum (#239)
-#30 Random Pick with Weight
 
 Focus: fixed vs variable window; when to shrink from the left vs recompute; deque for window max.
 
@@ -47,15 +45,15 @@ VARIABLE — 6
 🔥 Minimum Size Subarray Sum - done
 🔥 Fruit Into Baskets   - done
 🔥 Max Consecutive Ones III - done
-🔥 Longest Repeating Character Replacement
-🔥 Minimum Window Substring
+🔥 Longest Repeating Character Replacement - dones
+🔥 Minimum Window Substring  - done
 🔥 Sliding Window Maximum (#239)
 
 PREFIX SUM — 4
 🔥 Subarray Sum Equals K   - done
 🔥 Binary Subarrays With Sum   - done
 🔥 Subarray Sums Divisible by K  - done
-🔥 Continuous Subarray Sum
+🔥 Continuous Subarray Sum  - done
 
 
                  SUBARRAY / SUBSTRING

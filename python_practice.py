@@ -340,6 +340,65 @@ class Solution:
             max_ans = max(max_ans,right-left+1)
         return max_ans
 
+*hard
+https://leetcode.com/problems/minimum-window-substring/
+
+class Solution:
+        
+    def compare(self,fret,fres):
+        for i in range(256):
+            if  fret[i] > fres[i]:
+                return False
+        return True
+
+    def minWindow(self, s: str, t: str) -> str:
+        fret = [0]*256
+        fres = [0]*256
+        left = 0
+        min_start = 0
+        min_fre = float("inf")
+        for i in t:
+            fret[ord(i)] += 1
+        for right in range(len(s)):
+            fres[ord(s[right])] += 1
+            while self.compare(fret,fres):
+                if right - left + 1 < min_fre:
+                    min_fre = right - left + 1
+                    min_start = left 
+                fres[ord(s[left])] -= 1
+                left = left + 1
+        return "" if min_fre == float("inf") else s[min_start:min_start+min_fre]
+
+
+*hard
+https://leetcode.com/problems/longest-repeating-character-replacement/description/
+
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        fre_map = {}
+        left = 0
+        res = 0
+        for right in range(len(s)):
+            if s[right] not in fre_map:
+                fre_map[s[right]] = 1
+            else:
+                fre_map[s[right]] += 1
+            window_size = right - left + 1
+            max_fre = max(fre_map.values())
+            if window_size - max_fre > k:
+                fre_map[s[left]] -= 1
+                left = left + 1
+            res = max(res,right-left+1)
+        return res
+
+
+
+        
+
+===================================
+prefix sum
+===================================
+
 
 
 https://leetcode.com/problems/subarray-sum-equals-k/
@@ -384,7 +443,25 @@ class Solution:
         return ans
 
 
+https://leetcode.com/problems/continuous-subarray-sum/
 
+
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        fre = {0:-1}
+        curr_sum = 0
+        for right in range(len(nums)):
+            curr_sum = curr_sum + nums[right]
+            mod = curr_sum % k
+            if mod < 0:
+                mod = mod + k
+            if mod in fre and right - fre[mod] >= 2:
+                return True
+            if mod not in fre:
+                fre[mod] = right
+        return False
+            
+         
 
 
 
