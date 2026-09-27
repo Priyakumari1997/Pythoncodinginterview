@@ -505,6 +505,62 @@ class Solution:
                 else:
                     return False
         return len(stack) == 0
+
+
+===================================
+INTERVAL
+===================================
+
+
+https://leetcode.com/problems/merge-intervals/
+
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals = sorted(intervals)
+        res = []
+        for i in range(len(intervals)):
+            if len(res) == 0:
+                res.append(intervals[i])
+            else:
+                prev_val = res[-1][1]
+                curr_val = intervals[i][0]
+                curr_next = intervals[i][1]
+                if curr_val <= prev_val:
+                    res[-1][1] = max(prev_val,curr_next)
+                else:
+                    res.append(intervals[i])
+        return res
+
+
+https://leetcode.com/problems/insert-interval/
+
+
+class Solution:
+    def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
+        res = []
+        i = 0
+        while i < len(intervals) and intervals[i][1] < newInterval[0]:
+            res.append(intervals[i])
+            i = i + 1
+
+        while i < len(intervals) and intervals[i][0] <= newInterval[1]:
+            newInterval[0] = min(newInterval[0],intervals[i][0])
+            newInterval[1] = max(newInterval[1],intervals[i][1])
+            i += 1
+
+        res.append(newInterval)
+
+        while i < len(intervals):
+            res.append(intervals[i])
+            i = i + 1
+        return res
+
+
+
+
+
+ 
+  
        
 
             
