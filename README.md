@@ -11,7 +11,7 @@ Top K Frequent Elements (#347) - done
 Merge K Sorted Lists (#23)
 Task Scheduler (#621)
 Find Median from Data Stream (#295)  - done 
-Meeting Rooms II (#253)
+Meeting Rooms II (#253)  - done 
 
 Focus: recognize "top K" / "kth" language → min-heap of size K; know when heap beats sorting (O(n log k) vs O(n log n)).
 
@@ -58,6 +58,7 @@ PREFIX SUM — 4
 🔥 Binary Subarrays With Sum   - done
 🔥 Subarray Sums Divisible by K  - done
 🔥 Continuous Subarray Sum  - done
+🔥 count subarray sum equals 0  - done
 
 
                  SUBARRAY / SUBSTRING
@@ -107,20 +108,23 @@ PREFIX SUM — 4
 Day 4 — STACK
 -------------------------------------------------------
 🔥 Valid Parentheses  - done
+🔥 Next Greater Element I - done
+🔥 Next Greater Element II  - done
+🔥 Decode String
+🔥 https://leetcode.com/problems/longest-valid-parentheses/description/. - done
 
 ------------------------------------------------------
 Day 5— interval
 -------------------------------------------------------
-🔥  Merge Intervals
-🔥  Insert Interval
+🔥  Merge Intervals - done
+🔥  Insert Interval - done
+🔥  Meeting Rooms 1 - done https://neetcode.io/problems/meeting-schedule/
 
 ------------------------------------------------------
 Day 5 — Hashing/Sorting + Graphs (combined)
 ------------------------------------------------------
 
-Two Sum (#1)
-Group Anagrams (#49)
-Merge Intervals (#56)
+
 Number of Islands (#200)
 Clone Graph (#133)
 Course Schedule (#207)
@@ -128,3 +132,49 @@ Course Schedule II (#210)
 Network Delay Time (#743)
 
 Focus: hashing for O(1) lookups/grouping; BFS/DFS traversal setup; topological sort via Kahn's algorithm or DFS post-order.
+
+------------------------------------------------------
+Day 5 — Binary search
+------------------------------------------------------
+162. Find Peak Element  - done
+https://leetcode.com/problems/sqrtx/description/ - done 
+
+------------------------------------------------------
+Day 5 —kadanes algorithm approach
+------------------------------------------------------
+
+https://leetcode.com/problems/maximum-product-subarray/description/  - done
+
+
+------------------------------------------------------
+Day 6 — Common questions
+-------------------------------------------------------
+
+🔥. Product of Array Except Self - done
+🔥 Longest Palindromic Substring- done
+🔥 https://leetcode.com/problems/group-anagrams/   - done
+🔥 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/   - done
+🔥 https://leetcode.com/problems/longest-consecutive-sequence/description/ - done
+🔥 https://leetcode.com/problems/palindrome-number/description/  - done
+🔥 https://leetcode.com/problems/valid-palindrome-ii/description/  - done
+🔥 https://leetcode.com/problems/powx-n/  - done 
+
+
+
+
+to do
+https://leetcode.com/problems/merge-k-sorted-lists/description/
+https://leetcode.com/problems/largest-rectangle-in-histogram/
+https://leetcode.com/problems/longest-increasing-subsequence/description/  Subsequence  → not necessarily contiguous → DP / Binary Search
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/description/
+https://leetcode.com/problems/valid-palindrome-iii/
+https://leetcode.com/problems/house-robber/description/
+https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/description/
+https://www.geeksforgeeks.org/count-palindromic-subsequence-given-string/
+https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+https://leetcode.com/problems/valid-parenthesis-string/
+https://leetcode.com/problems/generate-parentheses/
+2. [M] https://leetcode.com/problems/combination-sum/
+3. 26[M] https://leetcode.com/problems/reverse-linked-list-ii/
+https://leetcode.com/problems/rotate-array/description/
+1. [M] https://leetcode.com/problems/search-in-rotated-sorted-array/

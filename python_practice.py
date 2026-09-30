@@ -82,6 +82,27 @@ class MedianFinder:
             return -self.max_heap[0]
 
 
+https://neetcode.io/problems/meeting-schedule-ii/
+
+import heapq
+class Solution:
+    def minMeetingRooms(self, intervals: List[Interval]) -> int:
+        min_heap = []
+        intervals = sorted(intervals, key=lambda x: x.start)
+
+        for i in intervals:
+            if min_heap and min_heap[0][0] <= i.start:
+                heapq.heappop(min_heap)
+
+            heapq.heappush(min_heap, (i.end, i.start))
+
+        return len(min_heap)
+
+Input: intervals = [(0,40),(5,10),(15,20)]
+
+Output: 2
+
+
 
 --------------------------------------------------------------------
 
@@ -483,6 +504,30 @@ class Solution:
                 fre[mod] = right
         return False
 
+
+Am - count subarray sum equals 0
+
+def countsubarray(nums,k):
+  fremap = {0:1}
+  ans = 0
+  prefix_sum = 0
+  for i in range(len(nums)):
+    prefix_sum = prefix_sum + nums[i]
+    if prefix_sum - k in fremap:
+      ans = ans + fremap[prefix_sum - k]
+    if prefix_sum not in fremap:
+      fremap[prefix_sum] = 1
+    else:
+      fremap[prefix_sum] += 1
+  return ans
+      
+  
+nums = [1, -1, 2, -2]
+k = 0
+print(countsubarray(nums,k))
+
+
+
  
 ===================================
 Stack
@@ -506,6 +551,90 @@ class Solution:
                     return False
         return len(stack) == 0
 
+
+https://leetcode.com/problems/next-greater-element-i/
+
+
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+     
+        res = [-1] * len(nums2)
+        stack = []
+        maps = {}
+        final = []
+        for i in range(len(nums2)-1,-1,-1):
+            while stack and nums2[i] > stack[-1]:
+                stack.pop()
+            if stack:
+                res[i] = stack[-1]
+            stack.append(nums2[i])
+
+        for j in range(len(nums2)):
+            maps[nums2[j]] = res[j]
+        
+
+        for k in range(len(nums1)):
+            final.append(maps[nums1[k]])
+        return final
+
+https://leetcode.com/problems/next-greater-element-ii/
+
+class Solution:
+    def nextGreaterElements(self, nums: list[int]) -> list[int]:
+        stack = []
+        ans = [-1] * len(nums)
+        n = len(nums)
+        for i in range((n*2)-1,-1,-1):
+            while stack and nums[i%n] >= stack[-1]:
+                stack.pop()
+            if i < n:
+                ans[i] = stack[-1] if stack else -1
+            stack.append(nums[i%n])
+
+        return ans
+
+
+https://leetcode.com/problems/longest-valid-parentheses/description/
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        st = [-1]
+        max_out = 0
+        for i in range(len(s)):
+            if  s[i] == '(':
+                st.append(i)
+            else:
+                st.pop()
+                if not st:
+                    st.append(i)
+                else:
+                    max_out = max(max_out,i-st[-1])
+        return max_out
+
+
+
+            
+------------------------------------------------------
+Day 5 —kadanes algorithm approach
+------------------------------------------------------
+
+https://leetcode.com/problems/maximum-product-subarray/
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        min_ans = float('-inf')
+        prefix_prod = 1
+        suffix_prod = 1
+        for i in range(len(nums)):
+            if prefix_prod == 0:
+                prefix_prod = 1
+            if suffix_prod == 0:
+                suffix_prod = 1
+            prefix_prod = prefix_prod * nums[i]
+            suffix_prod = suffix_prod * nums[(len(nums))-1-i]
+            min_ans = max(min_ans,prefix_prod,suffix_prod)            
+        return min_ans
+                   
 
 ===================================
 INTERVAL
@@ -554,6 +683,252 @@ class Solution:
             res.append(intervals[i])
             i = i + 1
         return res
+
+
+https://neetcode.io/problems/meeting-schedule/
+
+class Solution:
+    def canAttendMeetings(self, intervals: List[Interval]) -> bool:
+        intervals = sorted(intervals,key = lambda x : x.start)
+        
+        for i in range(1,len(intervals)):
+    
+            if intervals[i].start < intervals[i-1].end:
+            
+                return False
+              
+        return True
+
+Example 1:
+
+Input: intervals = [(0,30),(5,10),(15,20)]
+Output: false
+Explanation:
+(0,30) and (5,10) will conflict
+(0,30) and (15,20) will conflict
+Example 2:
+Input: intervals = [(5,8),(9,15)]
+Output: true
+
+
+
+------------------------------------------------------
+Day 5 — Binary search
+------------------------------------------------------
+
+https://leetcode.com/problems/find-peak-element/description/
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low < high:
+            mid = (low+high) // 2
+            if nums[mid] > nums[mid+1]:
+                high = mid
+            else:
+                low = mid + 1
+        return low
+
+
+https://leetcode.com/problems/sqrtx/
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x == 0:
+            return 0
+        low = 1
+        high = x
+        while low <= high:
+            mid = (low+high) // 2
+            if mid*mid == x:
+                return mid
+            if mid*mid > x:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return high
+        
+
+        
+
+------------------------------------------------------
+Day 6 — Common questions
+-------------------------------------------------------
+
+https://leetcode.com/problems/product-of-array-except-self/
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        prfix_array = [1] * len(nums)
+        suffix_array = [1] * len(nums)
+        ans = []
+        for i in range(1,len(nums)):
+            prfix_array[i] = prfix_array[i-1] * nums[i-1]
+
+        for j in range(len(nums)-2,-1,-1):
+            suffix_array[j] = suffix_array[j+1] * nums[j+1]
+
+        for k in range(len(nums)):
+            ans.append(prfix_array[k]*suffix_array[k])
+        
+        return ans
+
+
+https://leetcode.com/problems/longest-palindromic-substring/
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        out = ""
+        for i in range(len(s)):            
+            out = max(out,self.findpallend(i,i,s),self.findpallend(i,i+1,s),key = len)
+        return out
+
+
+    def findpallend(self,left,right,val):
+        while left >= 0 and right < len(val) and val[left] == val[right]:
+            left -= 1
+            right += 1
+        return val[left+1:right]
+
+
+
+https://leetcode.com/problems/group-anagrams/
+
+from collections import defaultdict
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        dic = defaultdict(list)
+        for i in range(len(strs)):
+            sorted_val = "".join(sorted(strs[i]))
+            dic[sorted_val].append(strs[i])
+        return list(dic.values())
+
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+from typing import List
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        left = 0
+        max_pr = 0
+        for right in range(1,len(prices)):
+            if prices[right] > prices[left]:
+                max_pr = max(max_pr,prices[right] - prices[left])
+            else:
+                left = right
+        return max_pr
+
+
+https://leetcode.com/problems/longest-consecutive-sequence/
+
+
+def longestConsecutive(self, nums: List[int]) -> int:
+    if not nums:
+        return 0
+    nums.sort()
+    c = 1
+    max_count = 1
+    for right in range(len(nums)):
+        if nums[right] == nums[right-1]:
+            continue
+        if nums[right] == nums[right-1] + 1:
+            c = c + 1
+        else:
+            c = 1
+        max_count = max(max_count,c)
+    return max_count
+
+
+https://leetcode.com/problems/palindrome-number/
+
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        
+        if x < 0:
+            return False
+        n = x
+        total = 0
+       
+        while n :
+            res = n % 10
+            total = total * 10 + res 
+            n = n //10
+        return total == x
+
+
+
+https://leetcode.com/problems/valid-palindrome-ii/
+
+            
+We have two possibilities.
+
+Option 1: Delete the left character
+Option 2: Delete the right character
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def ispallendrom(i,j):
+            while i< j:
+                if s[i] != s[j]:
+                    return False
+                i=i+1
+                j= j-1
+
+            return True
+
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            if s[left] != s[right]:
+                return ispallendrom(left+1,right) or ispallendrom(left,right-1)
+            left = left + 1
+            right = right - 1
+        return True
+
+
+https://leetcode.com/problems/merge-sorted-array/
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        temp = m + n - 1
+        i = m - 1
+        j = n - 1
+        while i >= 0 and j >= 0:
+            if nums2[j] > nums1[i]:
+                nums1[temp] = nums2[j]
+                j = j - 1
+            else:
+                nums1[temp] = nums1[i]
+                i = i - 1
+            temp = temp - 1
+
+        while j >= 0:
+            nums1[temp] = nums2[j]
+            j-=1
+            temp = temp -1
+        
+        return nums1
+
+
+https://leetcode.com/problems/powx-n/description/
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        exp = n
+        ans = 1
+        if exp < 0:
+            x = 1/x
+            exp = -exp
+        while exp:
+            if exp % 2 != 0:
+                ans = ans * x
+            x = x * x
+            exp = exp // 2
+        return ans
+        
+            
 
 
 
