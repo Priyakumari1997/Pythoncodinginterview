@@ -113,12 +113,23 @@ Day 4 — STACK
 🔥 Decode String
 🔥 https://leetcode.com/problems/longest-valid-parentheses/description/. - done
 
+Suggested priority order for today
+
+Decode String (your pending one)
+Daily Temperatures
+Largest Rectangle in Histogram
+Trapping Rain Water
+Basic Calculator II
+
 ------------------------------------------------------
 Day 5— interval
 -------------------------------------------------------
 🔥  Merge Intervals - done
 🔥  Insert Interval - done
 🔥  Meeting Rooms 1 - done https://neetcode.io/problems/meeting-schedule/
+🔥  Meeting Rooms 2 - done
+🔥  Interval List Intersections (#986) - done
+🔥  Non-overlapping Intervals (#435)- done
 
 ------------------------------------------------------
 Day 5 — Hashing/Sorting + Graphs (combined)
@@ -136,8 +147,13 @@ Focus: hashing for O(1) lookups/grouping; BFS/DFS traversal setup; topological s
 ------------------------------------------------------
 Day 5 — Binary search
 ------------------------------------------------------
+- [ ] Binary Search (#704) - done
 162. Find Peak Element  - done
 https://leetcode.com/problems/sqrtx/description/ - done 
+⭐Search in Rotated Sorted Array - done 
+[ ] ⭐ Find Minimum in Rotated Sorted Array (#153) - done
+ Find First and Last Position (#34) - done
+  ⭐ Koko Eating Bananas (#875)  - done
 
 ------------------------------------------------------
 Day 5 —kadanes algorithm approach

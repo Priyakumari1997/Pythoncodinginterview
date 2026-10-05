@@ -712,9 +712,73 @@ Output: true
 
 
 
+https://leetcode.com/problems/non-overlapping-intervals/description/
+
+class Solution:
+    def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:
+        stack = []
+        c = 0
+        intervals = sorted(intervals)
+        for i in range(len(intervals)):
+            if not stack:
+                stack.append(intervals[i])
+            else:
+                prev_val = stack[-1][1]
+                curr = intervals[i][0]
+                nex = intervals[i][1]
+                if prev_val > curr:
+                    stack[-1][1] = min(prev_val,nex)
+                    c = c + 1
+                else:
+                    stack.append(intervals[i])
+        return c
+
+
+https://leetcode.com/problems/interval-list-intersections/description/
+
+class Solution:
+    def intervalIntersection(self, firstList: list[list[int]], secondList: list[list[int]]) -> list[list[int]]:
+        i,j = 0,0
+        out = []
+        while i < len(firstList) and j < len(secondList):
+            
+            maxval = max(firstList[i][0],secondList[j][0])
+            minval = min(firstList[i][1],secondList[j][1])
+
+            if maxval <= minval:
+                out.append([maxval,minval])
+
+            if firstList[i][1] < secondList[j][1]:            
+                i = i + 1
+            else:
+                j = j + 1
+        return out
+
+
 ------------------------------------------------------
 Day 5 — Binary search
 ------------------------------------------------------
+
+https://leetcode.com/problems/binary-search/
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] == target:
+                return mid
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return -1
+
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
 
 https://leetcode.com/problems/find-peak-element/description/
 
@@ -722,13 +786,17 @@ class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         low = 0
         high = len(nums) - 1
+
         while low < high:
-            mid = (low+high) // 2
-            if nums[mid] > nums[mid+1]:
-                high = mid
-            else:
+            mid = (low + high) // 2
+            if nums[mid] < nums[mid + 1]:
                 low = mid + 1
+            else:
+                high = mid 
         return low
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
 
 
 https://leetcode.com/problems/sqrtx/
@@ -749,6 +817,117 @@ class Solution:
                 low = mid + 1
         return high
         
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = (low+high) // 2
+            if nums[mid] == target:
+                return mid
+            if nums[low] <= nums[mid]:
+                if nums[low] <= target < nums[mid]:
+                    high = mid - 1
+                else :
+                    low = mid + 1
+            else:
+                if nums[mid] < target <= nums[high]:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+        return -1
+
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
+class Solution:
+    def findMin(self, nums: list[int]) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low < high:
+            mid = (low + high) // 2
+            if nums[low] <= nums[high]:
+                return nums[low]
+            if nums[low] > nums[mid]:
+                high = mid
+            else:
+                low = mid + 1
+        return nums[low]
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
+
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        val1 = -1
+        val2 = -1
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = (low+high) // 2
+            if nums[mid] == target:
+                val1 = mid
+                high = mid - 1
+            elif nums[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = (low+high) // 2
+            if nums[mid] == target:
+                val2 = mid
+                low = mid + 1
+            elif nums[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return [val1,val2]
+            
+
+Time:  O(log n)
+Space: O(1)
+
+
+https://leetcode.com/problems/koko-eating-bananas/
+class Solution:
+    def findeatingcond(self,arr,k,h):
+        total = 0
+        for j in arr:
+            total += (j + k - 1) // k
+        return  total <= h
+        
+
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
+        low = 1
+        high = max(piles)
+        ans = high
+        while low <= high:
+            mid =  (high+low) // 2
+            if self.findeatingcond(piles,mid,h):
+                ans = mid 
+                high = mid - 1
+            else:
+                low = mid + 1
+        return ans
+
+Time = O(n log m)
+Space = O(1)
 
         
 
@@ -792,7 +971,7 @@ class Solution:
         return val[left+1:right]
 
 
-
+largest subset of anagram
 https://leetcode.com/problems/group-anagrams/
 
 from collections import defaultdict
@@ -803,6 +982,22 @@ class Solution:
             sorted_val = "".join(sorted(strs[i]))
             dic[sorted_val].append(strs[i])
         return list(dic.values())
+
+
+from collections import defaultdict
+
+
+
+def groupAnagrams(strs):
+    dic = defaultdict(list)
+    for i in range(len(strs)):
+        sorted_val = "".join(sorted(strs[i]))
+        dic[sorted_val].append(strs[i])
+    return max(dic.values(),key = len)
+
+
+word_list = ["ant", "magenta", "magnate", "tan", "gnamate"]
+print(groupAnagrams(word_list))
 
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
